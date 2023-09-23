@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     tools:context=".UserList"
     android:id="@+id/drawer_layout"
-    android:background="@color/base_color2">
+    android:background="@color/dark_blue">
 
 
 
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/drawer2"
+
             android:elevation="7dp"
 
             >
@@ -39,34 +39,36 @@
                 android:drawablePadding="15dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gym Members"
-                android:textSize="30dp"
-                android:fontFamily="@font/patuaone_regular"
-                android:textColor="@color/black"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="15dp"
-                android:layout_marginHorizontal="30dp"
-                />
+
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="35dp"
             android:layout_alignParentBottom="@+id/serach"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:background="@drawable/drawer"
             >
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gym Members"
+                android:textSize="35sp"
+                android:fontFamily="@font/patuaone_regular"
+                android:textColor="@color/black"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginHorizontal="30dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/user_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"
-
-
+                android:layout_marginTop="10dp"
+                android:fadingEdge="vertical"
+                android:elevation="10dp"
                 />
 
         </LinearLayout>
