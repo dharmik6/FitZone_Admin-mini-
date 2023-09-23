@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FitZone Admin</string>
+
+
+    //admin login
+    <string name="welcom_admin">Welcome back Admin,</string>
+    <string name="admin_welcome_back_discreiption">Ready to work now.</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <string name="nav_open">Open navigation drawer</string>
+    <string name="nav_close">Close navigation drawer</string>
+    <string name="fitzone">FitZone</string>
+
+</resources>
