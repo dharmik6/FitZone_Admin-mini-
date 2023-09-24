@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".UserList"
+    tools:context=".DietList"
     android:id="@+id/drawer_layout"
     android:background="@color/dark_blue">
 
@@ -39,7 +39,7 @@
                 android:layout_marginStart="-1dp"
                 android:fontFamily="@font/patuaone_regular"
                 android:paddingTop="10dp"
-                android:text="@string/user"
+                android:text="@string/diet"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gym Members"
+                android:text="@string/diet"
                 android:textSize="35sp"
                 android:fontFamily="@font/patuaone_regular"
                 android:textColor="@color/black"
@@ -91,7 +91,7 @@
                 android:layout_marginHorizontal="30dp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/user_recyclerView"
+                android:id="@+id/diet_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical"

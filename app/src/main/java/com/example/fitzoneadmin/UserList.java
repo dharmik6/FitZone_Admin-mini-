@@ -29,20 +29,7 @@ public class UserList extends AppCompatActivity {
         List<ListItem> userArrayList = new ArrayList<>();
         userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
         userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
+
         // Add more items as needed
 
         adapter = new MyAdapter(this, userArrayList);
@@ -50,4 +37,5 @@ public class UserList extends AppCompatActivity {
 
 
     }
+
 }

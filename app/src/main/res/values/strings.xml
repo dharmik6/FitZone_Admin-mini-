@@ -12,5 +12,11 @@
     <string name="nav_open">Open navigation drawer</string>
     <string name="nav_close">Close navigation drawer</string>
     <string name="fitzone">FitZone</string>
+    <string name="dashbord">DashBord</string>
+    <string name="user">Users</string>
+    <string name="trainer">Trainer</string>
+    <string name="workout">Workout</string>
+    <string name="diet">Diet</string>
+    <string name="gym_members">Gym Members</string>
 
 </resources>
