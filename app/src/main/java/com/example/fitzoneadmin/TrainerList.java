@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +45,17 @@ public class TrainerList extends AppCompatActivity {
 
         adapter = new MyAdapter(this, trainerArrayList);
         trainer_list.setAdapter(adapter);
+
+
+        //**********************************
+        //back page button
+        ImageView back_page = findViewById(R.id.btn_next_page);
+        back_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
 

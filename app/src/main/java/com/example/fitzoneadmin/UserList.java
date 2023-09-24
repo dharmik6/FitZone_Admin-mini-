@@ -1,6 +1,8 @@
 package com.example.fitzoneadmin;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +37,16 @@ public class UserList extends AppCompatActivity {
         adapter = new MyAdapter(this, userArrayList);
         user_list.setAdapter(adapter);
 
+
+        //**********************************
+        //back page button
+        ImageView back_page = findViewById(R.id.btn_next_page);
+        back_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 

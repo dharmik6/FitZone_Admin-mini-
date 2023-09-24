@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +34,15 @@ public class DietList extends AppCompatActivity {
 
         adapter = new MyAdapter2(this, dietArrayList);
         diet_list.setAdapter(adapter);
+
+        //**********************************
+        //back page button
+        ImageView back_page = findViewById(R.id.btn_next_page);
+        back_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }
