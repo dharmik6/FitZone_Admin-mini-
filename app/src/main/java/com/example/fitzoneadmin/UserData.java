@@ -14,15 +14,8 @@ public class UserData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);
-        update = findViewById(R.id.btn_Update);
-        delete = findViewById(R.id.btn_Delete);
 
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(UserData.this, "Record Updated", Toast.LENGTH_SHORT).show();
-            }
-        });
+        delete = findViewById(R.id.btn_Delete);
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
