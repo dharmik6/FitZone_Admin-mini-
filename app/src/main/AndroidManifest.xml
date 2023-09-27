@@ -13,6 +13,12 @@
         android:theme="@style/Theme.FitZoneAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".DietEdit"
+            android:exported="false" />
+        <activity
+            android:name=".WorkoutEdit"
+            android:exported="false" />
+        <activity
             android:name=".DietData"
             android:exported="false" />
         <activity

@@ -29,5 +29,11 @@
     <string name="client_data">Client Data</string>
     <string name="trainer_data">Trainer Data</string>
     <string name="description">Description</string>
+    <string name="add_new_workout">Add New Workout</string>
+    <string name="add_new_diet">Add New Diet</string>
+    <string name="update_data">Update Data</string>
+    <string name="workout_name">Workout name</string>
+    <string name="workout_image">Workout Image</string>
+    <string name="submit">Submit</string>
 
 </resources>

@@ -56,16 +56,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/diet_image"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="30dp"
-                android:src="@color/white"
-                android:scaleType="centerCrop"/>
 
             <TextView
-
                 android:id="@+id/diet_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,14 +67,19 @@
                 android:text="Diet name"
                 android:textColor="@color/black"
                 android:textSize="30dp" />
-
-
+            <ImageView
+                android:id="@+id/diet_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="30dp"
+                android:src="@color/white"
+                android:scaleType="centerCrop"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/robotoslab_regular"
                 android:text="@string/description"
                 android:textColor="@color/black"
