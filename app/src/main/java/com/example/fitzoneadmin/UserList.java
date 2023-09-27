@@ -4,42 +4,67 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList extends AppCompatActivity {
-    //*********************************
     // RecyclerView
-    RecyclerView user_list ;
-    RecyclerView.Adapter adaptor;
-
-    MyAdapter adapter;
+    RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private List<ListItem> listItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-        user_list = findViewById(R.id.user_recyclerView);
-        user_list.setHasFixedSize(true);
-        user_list.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.user_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<ListItem> userArrayList = new ArrayList<>();
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        userArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
+        // Initialize the adapter with an empty list
+        adapter = new MyAdapter(listItems);
+        recyclerView.setAdapter(adapter);
 
-        // Add more items as needed
+        // Fetch data from Firebase Realtime Database and add it to listItems
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listItems.clear();
 
-        adapter = new MyAdapter(this, userArrayList);
-        user_list.setAdapter(adapter);
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    // Get the "name" and "Number" fields from the database
+                    String uname = dataSnapshot.child("name").getValue(String.class);
+                    String phone = dataSnapshot.child("Number").getValue(String.class);
 
+                    ListItem listItem = new ListItem();
+                    listItem.setTitle(uname);
+                    listItem.setSubTitle(phone);
 
-        //**********************************
-        //back page button
+                    listItems.add(listItem);
+                }
+                // Notify the adapter that the data has changed
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle database error
+            }
+        });
+
+        // Initialize back_page button
         ImageView back_page = findViewById(R.id.btn_next_page);
         back_page.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +72,5 @@ public class UserList extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
     }
-
 }

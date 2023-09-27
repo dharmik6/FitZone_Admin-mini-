@@ -14,17 +14,17 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private List<ListItem> items;
+    private List<ListItem> listItems;
     private Context context;
 
-    public MyAdapter(Context context, List<ListItem> items){
+    public MyAdapter(Context context, List<ListItem> listItems){
         this.context = context;
-        this.items = items;
+        this.listItems = listItems;
     }
 
     public MyAdapter(List<ListItem> userArrayList) {
         this.context = context;
-        this.items = items;
+        this.listItems = listItems;
     }
 
 
@@ -37,27 +37,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ListItem item = items.get(position);
-        holder.titleTextView.setText(item.getTitle());
-        holder.subTitleTextView.setText(item.getSubTitle());
-        holder.imageView.setImageResource(item.getImagId());
+        ListItem item = listItems.get(position);
+        holder.name.setText(item.getTitle());
+        holder.phone.setText(item.getSubTitle());
+//        holder.imageView.setImageResource(item.getImagId());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        if (listItems != null) {
+            return listItems.size(); // Return the size of the list if it's not null
+        } else {
+            return 0; // Return 0 if the list is null
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView;
-        TextView subTitleTextView;
-        ImageView imageView;
+        TextView name;
+        TextView phone;
+//        ImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.title);
-            subTitleTextView = itemView.findViewById(R.id.sub_title);
-            imageView = itemView.findViewById(R.id.imgId);
+            name = itemView.findViewById(R.id.title);
+            phone = itemView.findViewById(R.id.sub_title);
+//            imageView = itemView.findViewById(R.id.imgId);
         }
     }
 }
