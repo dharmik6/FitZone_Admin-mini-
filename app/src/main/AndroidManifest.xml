@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FitZoneAdmin"
         tools:targetApi="31">
         <activity
+            android:name=".UserData"
+            android:exported="false" />
+        <activity
             android:name=".DietAdd"
             android:exported="false" />
         <activity
@@ -34,9 +37,6 @@
             android:name=".TrainerData"
             android:exported="false" />
         <activity
-            android:name=".UserData"
-            android:exported="false" />
-        <activity
             android:name=".WorkoutList"
             android:exported="false" />
         <activity
@@ -50,9 +50,6 @@
             android:exported="false" />
         <activity
             android:name=".AdminHomePage"
-            android:exported="false" />
-        <activity
-            android:name=".AdminLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -60,6 +57,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AdminLogin"
+            android:exported="false" />
     </application>
 
 </manifest>

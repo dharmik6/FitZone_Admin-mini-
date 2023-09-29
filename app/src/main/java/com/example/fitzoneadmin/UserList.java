@@ -23,21 +23,26 @@ public class UserList extends AppCompatActivity {
     RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<ListItem> listItems = new ArrayList<>();
-
+DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
 
-        recyclerView = findViewById(R.id.user_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("users");
 
-        // Initialize the adapter with an empty list
-        adapter = new MyAdapter(listItems);
+        recyclerView = findViewById(R.id.user_recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MyAdapter(this, listItems);
         recyclerView.setAdapter(adapter);
 
-        // Fetch data from Firebase Realtime Database and add it to listItems
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+        setDatabaseListener();
+
+    }
+
+    private void setDatabaseListener() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
