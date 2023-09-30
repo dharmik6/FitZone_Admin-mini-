@@ -2,6 +2,7 @@ package com.example.fitzoneadmin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,8 @@ public class DietData extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DietData.this, "Record Updated", Toast.LENGTH_SHORT).show();
+                Intent homeIntent = new Intent(DietData.this, DietEdit.class);
+                startActivity(homeIntent);
             }
         });
 

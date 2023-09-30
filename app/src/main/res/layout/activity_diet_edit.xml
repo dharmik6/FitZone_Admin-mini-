@@ -99,14 +99,14 @@
                         android:fontFamily="@font/patuaone_regular"
                         android:textColor="@color/black"/>
                     <ImageView
-                        android:id="@+id/diet_image"
+                        android:id="@+id/change_diet_image"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:layout_marginTop="30dp"
                         android:src="@color/white"
                         android:scaleType="centerCrop"/>
                     <Button
-                        android:id="@+id/change_diet_image"
+                        android:id="@+id/btn_change_diet_image"
                         android:layout_width="150dp"
                         android:layout_height="50dp"
                         android:layout_marginTop="20dp"

@@ -68,7 +68,7 @@
                     android:fontFamily="@font/patuaone_regular"
                     android:text="@string/workout_name"
                     android:textColor="@color/black"
-                    android:textSize="25dp"
+                    android:textSize="27dp"
                     />
 
                 <TextView

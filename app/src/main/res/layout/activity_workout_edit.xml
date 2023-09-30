@@ -98,13 +98,17 @@
                 android:textSize="25dp"
                 android:fontFamily="@font/patuaone_regular"
                 android:textColor="@color/black"/>
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="200dp"
-               android:layout_marginTop="20dp"
-               android:src="@color/white" />
-            <Button
+
+            <ImageView
                 android:id="@+id/change_work_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@color/white"
+                android:scaleType="centerCrop"/>
+
+            <Button
+                android:id="@+id/btn_change_work_image"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
