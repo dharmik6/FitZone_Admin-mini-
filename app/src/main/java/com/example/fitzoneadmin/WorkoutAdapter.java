@@ -39,6 +39,7 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
             String workoutName = currentItem.getWorkoutName();
             String workoutFocusArea = currentItem.getWorkoutFocusArea();
             String workoutDescription = currentItem.getWorkoutDescription();
+            String workoutimg=currentItem.getWorkoutImageResourceId();
 
             // Check if the values are not null before using them
             if (workoutName != null) {
@@ -52,11 +53,20 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
             } else {
                 holder.focusAreaTextView.setText("");
             }
+            if (workoutimg != null) {
+                holder.workoutImageView.setImageResource(Integer.parseInt(currentItem.getWorkoutImageResourceId()));
+            } else {
+                // You can set a default placeholder image or leave it as it is
+                holder.workoutImageView.setImageResource(R.drawable.workout);
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, WorkoutData.class);
-
+                    intent.putExtra("wname",currentItem.getWorkoutName());
+                    intent.putExtra("wfocus",currentItem.getWorkoutFocusArea());
+                    intent.putExtra("wdes",currentItem.getWorkoutDescription());
+                    intent.putExtra("imag",currentItem.getWorkoutImageResourceId());
                     // Add the FLAG_ACTIVITY_NEW_TASK flag
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
@@ -87,7 +97,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
             workoutNameTextView = itemView.findViewById(R.id.workoutNameTextView);
             focusAreaTextView = itemView.findViewById(R.id.focusAreaTextView);
             workoutImageView = itemView.findViewById(R.id.workoutImageView);
-
 
         }
     }

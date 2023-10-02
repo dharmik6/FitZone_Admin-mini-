@@ -49,54 +49,55 @@ public class UserData extends AppCompatActivity {
         databaseReference = database.getReference("users").child(username);
         setDatabaseListener();
 
+        nameTextView.setText(getIntent().getStringExtra("name"));
     }
 
     private void setDatabaseListener() {
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Check if the user exists
-                if (dataSnapshot.exists()) {
-                    // Retrieve data from the dataSnapshot and set+ it to your TextViews
-                    String name = dataSnapshot.child("name").getValue(String.class);
-                    String number = dataSnapshot.child("number").getValue(String.class);
-                    String age = dataSnapshot.child("age").getValue(String.class);
-                    String gender = dataSnapshot.child("gender").getValue(String.class);
-                    String email = dataSnapshot.child("email").getValue(String.class);
-                    String height = dataSnapshot.child("height").getValue(String.class);
-                    String weight = dataSnapshot.child("weight").getValue(String.class);
-
-                    // Set the retrieved data to your TextViews
-                    nameTextView.setText(name);
-                    numberTextView.setText(number);
-                    ageTextView.setText(age);
-                    genderTextView.setText(gender);
-                    emailTextView.setText(email);
-                    heightTextView.setText(height);
-                    weightTextView.setText(weight);
-                } else {
-                    // Handle the case where the user does not exist
-                    Toast.makeText(UserData.this, "User not found", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle any errors here
-                Toast.makeText(UserData.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // Check if the user exists
+//                if (dataSnapshot.exists()) {
+//                    // Retrieve data from the dataSnapshot and set+ it to your TextViews
+//                    String name = dataSnapshot.child("name").getValue(String.class);
+//                    String number = dataSnapshot.child("number").getValue(String.class);
+//                    String age = dataSnapshot.child("age").getValue(String.class);
+//                    String gender = dataSnapshot.child("gender").getValue(String.class);
+//                    String email = dataSnapshot.child("email").getValue(String.class);
+//                    String height = dataSnapshot.child("height").getValue(String.class);
+//                    String weight = dataSnapshot.child("weight").getValue(String.class);
+//
+//                    // Set the retrieved data to your TextViews
+//                    nameTextView.setText(name);
+//                    numberTextView.setText(number);
+//                    ageTextView.setText(age);
+//                    genderTextView.setText(gender);
+//                    emailTextView.setText(email);
+//                    heightTextView.setText(height);
+//                    weightTextView.setText(weight);
+//                } else {
+//                    // Handle the case where the user does not exist
+//                    Toast.makeText(UserData.this, "User not found", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                // Handle any errors here
+//                Toast.makeText(UserData.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         // Rest of your code
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Here, you can delete the user's data from the Firebase Realtime Database
-                // Assuming you have a specific user ID, replace "userID" with the actual user ID
-                String userID = "users";
+                // Get the username from the intent
+                String username = getIntent().getStringExtra("name");
 
-                DatabaseReference userRef = databaseReference.child(userID);
+                // Delete the user's data
+                DatabaseReference userRef = databaseReference.getRoot().child("users").child(username);
                 userRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -111,7 +112,6 @@ public class UserData extends AppCompatActivity {
                         Toast.makeText(UserData.this, "Failed to delete record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
             }
         });
 

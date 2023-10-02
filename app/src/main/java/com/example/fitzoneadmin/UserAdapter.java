@@ -101,7 +101,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                         String username = item.getUserName();
 
                         Intent intent = new Intent(context, UserData.class);
-                        intent.putExtra("username", username); // Pass the username as an extra
+                        intent.putExtra("user name", username); // Pass the username as an extra
                         context.startActivity(intent);
                     }
                 }
