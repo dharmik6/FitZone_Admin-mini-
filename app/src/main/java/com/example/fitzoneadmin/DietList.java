@@ -45,6 +45,18 @@ public class DietList extends AppCompatActivity {
         adapter = new DietAdapter(getApplicationContext(), dietItems);
         recyclerView.setAdapter(adapter);
 
+        //*****************************
+        // add diet
+        add_diet = findViewById(R.id.add_diet);
+
+        add_diet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent idietadd = new Intent(DietList.this,WorkoutAdd.class);
+                startActivity(idietadd);
+            }
+        });
+
         //***************************************************
         //navigation bar
         drawerLayout = findViewById(R.id.drawer_layout);

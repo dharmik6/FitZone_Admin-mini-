@@ -34,6 +34,17 @@ public class WorkoutList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
+        //********************************************
+        // add new item
+        add_work = findViewById(R.id.add_workout);
+
+        add_work.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iworkadd = new Intent(WorkoutList.this,WorkoutAdd.class);
+                startActivity(iworkadd);
+            }
+        });
 
         // Sample workout items, you can add more items as needed
         workoutItems.add(new WorkoutItem("Workout 1", "Focus Area 1", R.drawable.baseline_image_24));
