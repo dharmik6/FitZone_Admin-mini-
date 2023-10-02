@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
+    tools:openDrawer=""
     tools:context=".AdminHomePage"
     android:id="@+id/drawer_layout"
     android:background="@color/dark_blue">
@@ -88,10 +88,11 @@
 
                         <ImageView
 
-                            android:layout_width="106dp"
-                            android:layout_height="101dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/round_person_24" />
+                            android:src="@drawable/user"
+                            android:layout_marginTop="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -125,10 +126,11 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="106dp"
-                            android:layout_height="101dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/round_person_24" />
+                            android:src="@drawable/trainer"
+                            android:layout_marginTop="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -165,7 +167,8 @@
                             android:layout_width="106dp"
                             android:layout_height="101dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/round_person_24" />
+                            android:src="@drawable/workout"
+                            android:layout_marginTop="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -202,7 +205,8 @@
                             android:layout_width="106dp"
                             android:layout_height="101dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/round_person_24" />
+                            android:src="@drawable/diet"
+                            android:layout_marginTop="20dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -210,7 +214,7 @@
                             android:layout_gravity="center"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/robotoslab_regular"
-                            android:text="diet"
+                            android:text="@string/diet"
                             android:textColor="@color/black"
                             android:textSize="25dp" />
                     </LinearLayout>
