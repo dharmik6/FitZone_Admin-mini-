@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserData extends AppCompatActivity {
     // Define your TextView elements
-    TextView nameTextView, numberTextView, ageTextView, genderTextView, emailTextView, heightTextView, weightTextView;
+    TextView nameTextView,weightTextView,numberTextView,ageTextView,heightTextView,emailTextView,genderTextView;
     Button delete ;
     DatabaseReference databaseReference;
 
@@ -41,9 +41,12 @@ public class UserData extends AppCompatActivity {
         heightTextView = findViewById(R.id.uHeight);
         weightTextView = findViewById(R.id.uWeight);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("users");
+        // Retrieve the username from the intent
+        String username = getIntent().getStringExtra("username");
 
+        // Initialize the database reference to the specific user
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("users").child(username);
         setDatabaseListener();
 
     }
@@ -55,7 +58,7 @@ public class UserData extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Check if the user exists
                 if (dataSnapshot.exists()) {
-                    // Retrieve data from the dataSnapshot and set it to your TextViews
+                    // Retrieve data from the dataSnapshot and set+ it to your TextViews
                     String name = dataSnapshot.child("name").getValue(String.class);
                     String number = dataSnapshot.child("number").getValue(String.class);
                     String age = dataSnapshot.child("age").getValue(String.class);

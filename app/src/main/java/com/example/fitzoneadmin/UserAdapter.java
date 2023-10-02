@@ -1,6 +1,7 @@
 package com.example.fitzoneadmin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,28 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private List<UserItem> userItems;
     private Context context;
+    private OnItemClickListener onItemClickListener;
+    private int adapterPosition;
 
     public UserAdapter(Context context, List<UserItem> userItems) {
         this.context = context;
         this.userItems = userItems;
+    }
+
+    public void setAdapterPosition(int adapterPosition) {
+        this.adapterPosition = adapterPosition;
+    }
+
+    public int getAdapterPosition() {
+        return adapterPosition;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position); // Step 1: Define a method for item click
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener; // Step 2: Set the item click listener
     }
 
     @NonNull
@@ -34,11 +53,34 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         UserItem item = userItems.get(position);
         holder.userNameTextView.setText(item.getUserName());
         holder.userImageView.setImageResource(item.getUserImageResourceId());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    UserItem item = userItems.get(position);
+                    String username = item.getUserName();
+
+                    Intent intent = new Intent(context, UserData.class);
+                    intent.putExtra("username", username); // Pass the username as an extra
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Add this flag
+                    context.startActivity(intent);
+                } else {
+                    // Handle the case where the position is invalid or the view holder is detached.
+                    // You can log an error or display a message to the user.
+                }
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return userItems.size();
+        if (userItems != null) {
+            return userItems.size(); // Return the size of the list if it's not null
+        } else {
+            return 0; // Return 0 if the list is null
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,6 +91,21 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
             userNameTextView = itemView.findViewById(R.id.userNameTextView);
             userImageView = itemView.findViewById(R.id.userImageView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        UserItem item = userItems.get(position);
+                        String username = item.getUserName();
+
+                        Intent intent = new Intent(context, UserData.class);
+                        intent.putExtra("username", username); // Pass the username as an extra
+                        context.startActivity(intent);
+                    }
+                }
+            });
         }
     }
 }
