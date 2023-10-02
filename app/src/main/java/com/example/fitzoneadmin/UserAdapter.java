@@ -1,5 +1,6 @@
 package com.example.fitzoneadmin;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,48 +14,41 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    private List<ListItem> mDataList;
+    private List<UserItem> userItems;
+    private Context context;
 
-    public UserAdapter(List<ListItem> dataList) {
-        this.mDataList = dataList;
+    public UserAdapter(Context context, List<UserItem> userItems) {
+        this.context = context;
+        this.userItems = userItems;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_disign, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ListItem item = mDataList.get(position);
-        holder.titleTextView.setText(item.getTitle());
-        holder.subTitleTextView.setText(item.getSubTitle());
-        // Assuming you have a method in your ViewHolder class to set the image
-        holder.setImage(item.getImagId());
+        UserItem item = userItems.get(position);
+        holder.userNameTextView.setText(item.getUserName());
+        holder.userImageView.setImageResource(item.getUserImageResourceId());
     }
 
     @Override
     public int getItemCount() {
-        return mDataList.size();
+        return userItems.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView;
-        TextView subTitleTextView;
-        ImageView imageView;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView userNameTextView;
+        ImageView userImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(R.id.title);
-            subTitleTextView = itemView.findViewById(R.id.sub_title);
-            imageView = itemView.findViewById(R.id.imgId);
-        }
-
-        public void setImage(Integer resourceId) {
-            // Set the image to imageView using the provided resourceId
-            // For example: imageView.setImageResource(resourceId);
+            userNameTextView = itemView.findViewById(R.id.userNameTextView);
+            userImageView = itemView.findViewById(R.id.userImageView);
         }
     }
 }

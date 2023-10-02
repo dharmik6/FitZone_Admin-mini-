@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserData">
+    tools:context=".UserData"
+    android:background="@color/dark_blue">
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"

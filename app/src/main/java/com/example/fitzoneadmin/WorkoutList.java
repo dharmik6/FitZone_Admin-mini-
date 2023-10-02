@@ -22,8 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutList extends AppCompatActivity {
-    RecyclerView work_list;
-    MyAdapter2 adapter;
+    private RecyclerView recyclerView;
+    private WorkoutAdapter adapter;
+    private List<WorkoutItem> workoutItems = new ArrayList<>();
 
     TextView add_work ;
     DrawerLayout drawerLayout ;
@@ -34,28 +35,16 @@ public class WorkoutList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
 
-        add_work = findViewById(R.id.add_workout);
-        add_work.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent user = new Intent(WorkoutList.this,WorkoutAdd.class);
-                startActivity(user);
-            }
-        });
+        // Sample workout items, you can add more items as needed
+        workoutItems.add(new WorkoutItem("Workout 1", "Focus Area 1", R.drawable.baseline_image_24));
+        workoutItems.add(new WorkoutItem("Workout 2", "Focus Area 2", R.drawable.baseline_image_24));
+        workoutItems.add(new WorkoutItem("Workout 3", "Focus Area 3", R.drawable.baseline_image_24));
 
-        work_list = findViewById(R.id.work_recyclerView);
-        work_list.setHasFixedSize(true);
-        work_list.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.work_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-
-        List<ListItem2> workArrayList = new ArrayList<>();
-        workArrayList.add(new ListItem2("dharmik", R.drawable.my));
-
-        // Add more items as needed
-        workArrayList.add(new ListItem2("Another Item",  R.drawable.my ));
-
-        adapter = new MyAdapter2(this, workArrayList);
-        work_list.setAdapter(adapter);
+        adapter = new WorkoutAdapter(getApplicationContext(), workoutItems);
+        recyclerView.setAdapter(adapter);
 
 
         //***************************************************

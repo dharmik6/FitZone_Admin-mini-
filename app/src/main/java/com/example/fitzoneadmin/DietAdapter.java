@@ -1,5 +1,6 @@
 package com.example.fitzoneadmin;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,44 +14,41 @@ import java.util.List;
 
 public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
-    private List<ListItem2> mDataList;
+    private List<DietItem> dietItems;
+    private Context context;
 
-    public DietAdapter(List<ListItem2> dataList) {
-        this.mDataList = dataList;
+    public DietAdapter(Context context, List<DietItem> dietItems) {
+        this.context = context;
+        this.dietItems = dietItems;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_dedign2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_diet, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ListItem2 item = mDataList.get(position);
-        holder.titleTextView.setText(item.getTitle());
-        holder.setImage(item.getImageId());
+        DietItem item = dietItems.get(position);
+        holder.dietNameTextView.setText(item.getDietName());
+        holder.dietImageView.setImageResource(item.getDietImageResourceId());
     }
 
     @Override
     public int getItemCount() {
-        return mDataList.size();
+        return dietItems.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView;
-        ImageView imageView;
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView dietNameTextView;
+        ImageView dietImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            titleTextView = itemView.findViewById(androidx.core.R.id.title);
-            imageView = itemView.findViewById(R.id.imgId);
-        }
-
-        public void setImage(Integer resourceId) {
-            // Set the image to imageView using the provided resourceId
-            // For example: imageView.setImageResource(resourceId);
+            dietNameTextView = itemView.findViewById(R.id.dietNameTextView);
+            dietImageView = itemView.findViewById(R.id.dietImageView);
         }
     }
 }

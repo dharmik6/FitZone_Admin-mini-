@@ -11,37 +11,45 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64743f73-6f9a-4e6e-add4-46935ab9b38f" name="Changes" comment="update page workout and diet">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_diet_add.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_workout_add.xml" afterDir="false" />
+    <list default="true" id="64743f73-6f9a-4e6e-add4-46935ab9b38f" name="Changes" comment="all adapter are clear">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_image_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_diet.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_trainer.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_user.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/ListItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/ListItem2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/MyAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/MyAdapter2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_dedign2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_dedign2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_disign.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/list_disign.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/my.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_dedign2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_workout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/list_disign.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[G6HA4DE699W8Q44T]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\DHARMIK\.android\avd\Pixel_2_API_31.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -103,22 +111,24 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2VngksgwXfwyJqbPO0f0geGTjrO" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/collage/mini projrct/Mini Project&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;D:/collage/mini projrct/FitZoneAdmin/app/src/main/res/layout/list_disign.xml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "D:/collage/mini projrct/FitZone_Admin",
+    "two.files.diff.last.used.file": "D:/collage/mini projrct/FitZoneAdmin/app/src/main/res/layout/list_disign.xml"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="android.template.674640424">
       <recent name="com.example.fitzoneadmin" />
@@ -127,11 +137,11 @@
       <recent name="com.example.fitzoneadmin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\collage\mini projrct\FitZone_Admin\app\src\main\res\layout" />
       <recent name="D:\collage\mini projrct\FitZoneAdmin\app\src\main\res\drawable" />
       <recent name="D:\collage\mini projrct\FitZoneAdmin\app\src\main\res" />
       <recent name="D:\collage\mini projrct\FitZoneAdmin\app\src\main\res\menu" />
       <recent name="D:\collage\mini projrct\FitZoneAdmin\app\src\main\res\values" />
-      <recent name="D:\collage\mini projrct\FitZoneAdmin\app\src\main\res\layout" />
     </key>
     <key name="android.template.1678503988">
       <recent name="com.example.fitzoneadmin" />
@@ -146,6 +156,9 @@
       <recent name="com.example.fitzoneadmin" />
     </key>
     <key name="android.template.-1777957607">
+      <recent name="com.example.fitzoneadmin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.fitzoneadmin" />
     </key>
   </component>
@@ -281,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695822963766</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="all adapter are clear">
+      <created>1696134924242</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696134924242</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

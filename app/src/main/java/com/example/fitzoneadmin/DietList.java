@@ -23,8 +23,9 @@ import java.util.List;
 
 public class DietList extends AppCompatActivity {
     TextView add_diet ;
-    RecyclerView diet_list;
-    MyAdapter2 adapter;
+    private RecyclerView recyclerView;
+    private DietAdapter adapter;
+    private List<DietItem> dietItems = new ArrayList<>();
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
 
@@ -33,28 +34,16 @@ public class DietList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_list);
 
-        add_diet = findViewById(R.id.add_diet);
-        add_diet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent user = new Intent(DietList.this,DietAdd.class);
-                startActivity(user);
-            }
-        });
+        // Sample diet items, you can add more items as needed
+        dietItems.add(new DietItem("Diet 1", R.drawable.round_menu_24));
+        dietItems.add(new DietItem("Diet 2", R.drawable.round_menu_24));
+        dietItems.add(new DietItem("Diet 3", R.drawable.round_menu_24));
 
-        diet_list = findViewById(R.id.diet_recyclerView);
-        diet_list.setHasFixedSize(true);
-        diet_list.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView = findViewById(R.id.diet_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        List<ListItem2> dietArrayList = new ArrayList<>();
-        dietArrayList.add(new ListItem2("dharmik", R.drawable.my));
-
-        // Add more items as needed
-        dietArrayList.add(new ListItem2("Another Item",  R.drawable.my ));
-
-        adapter = new MyAdapter2(this, dietArrayList);
-        diet_list.setAdapter(adapter);
-
+        adapter = new DietAdapter(getApplicationContext(), dietItems);
+        recyclerView.setAdapter(adapter);
 
         //***************************************************
         //navigation bar

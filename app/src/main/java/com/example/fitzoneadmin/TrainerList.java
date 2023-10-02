@@ -24,10 +24,10 @@ import java.util.List;
 
 public class TrainerList extends AppCompatActivity {
 
-    RecyclerView trainer_list ;
-    RecyclerView.Adapter adaptor;
+    private RecyclerView recyclerView;
+    private TrainerAdapter adapter;
+    private List<TrainerItem> trainerItems = new ArrayList<>();
 
-    MyAdapter adapter;
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
     @Override
@@ -35,19 +35,15 @@ public class TrainerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_list);
 
-        trainer_list = findViewById(R.id.trainer_recyclerView);
-        trainer_list.setHasFixedSize(true);
-        trainer_list.setLayoutManager(new LinearLayoutManager(this));
+        trainerItems.add(new TrainerItem("Trainer 1", R.drawable.baseline_image_24));
+        trainerItems.add(new TrainerItem("Trainer 2", R.drawable.baseline_image_24));
+        trainerItems.add(new TrainerItem("Trainer 3", R.drawable.baseline_image_24));
 
-        List<ListItem> trainerArrayList = new ArrayList<>();
-        trainerArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
-        trainerArrayList.add(new ListItem("dharmik", "kacha", R.drawable.my));
+        recyclerView = findViewById(R.id.trainer_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        // Add more items as needed
-
-        adapter = new MyAdapter(this, trainerArrayList);
-        trainer_list.setAdapter(adapter);
-
+        adapter = new TrainerAdapter(getApplicationContext(), trainerItems);
+        recyclerView.setAdapter(adapter);
 
         //***************************************************
         //navigation bar
