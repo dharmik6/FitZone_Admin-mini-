@@ -17,6 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +34,7 @@ public class WorkoutList extends AppCompatActivity {
     TextView add_work ;
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,33 +52,18 @@ public class WorkoutList extends AppCompatActivity {
             }
         });
 
-        // Sample workout items, you can add more items as needed
-        workoutItems.add(new WorkoutItem("Workout 1", "Focus Area 1", R.drawable.baseline_image_24));
-        workoutItems.add(new WorkoutItem("Workout 2", "Focus Area 2", R.drawable.baseline_image_24));
-        workoutItems.add(new WorkoutItem("Workout 3", "Focus Area 3", R.drawable.baseline_image_24));
-
-        recyclerView = findViewById(R.id.work_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-        adapter = new WorkoutAdapter(getApplicationContext(), workoutItems);
-        recyclerView.setAdapter(adapter);
-
 
         //***************************************************
         //navigation bar
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationview);
         ImageView menu = findViewById(R.id.menu);
-
-
-
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDrawer(drawerLayout);
             }
         });
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -95,6 +86,47 @@ public class WorkoutList extends AppCompatActivity {
                 return true;
             }
         });
+
+        recyclerView = findViewById(R.id.work_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new WorkoutAdapter(this, workoutItems);
+        recyclerView.setAdapter(adapter);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("workouts");
+
+        adapter = new WorkoutAdapter(getApplicationContext(), workoutItems);
+        recyclerView.setAdapter(adapter);
+
+        setDatabaseListener();
+    }
+
+    private void setDatabaseListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                workoutItems.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String workoutName = dataSnapshot.child("workoutName").getValue(String.class);
+                    String workoutFocusArea = dataSnapshot.child("workoutFocusArea").getValue(String.class);
+
+                    if (workoutName != null && workoutFocusArea != null) {
+                        WorkoutItem workoutItem = new WorkoutItem(workoutName, workoutFocusArea);
+                        workoutItems.add(workoutItem);
+                    }
+                }
+                adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle database error
+            }
+        });
+
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {
