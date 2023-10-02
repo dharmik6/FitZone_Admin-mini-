@@ -2,18 +2,49 @@ package com.example.fitzoneadmin;
 
 public class DietItem {
     private String dietName;
-    private int dietImageResourceId;
+    private String imageUrl;
+    private String dietDescription;
 
-    public DietItem(String dietName, int dietImageResourceId) {
+    public DietItem(String dietName, String dietImageResourceId) {
         this.dietName = dietName;
-        this.dietImageResourceId = dietImageResourceId;
+        this.dietDescription = dietImageResourceId;
+    }
+
+    public DietItem(String dietName) {
+        this.dietName=dietName;
+    }
+
+    public void setDietName(String dietName) {
+        this.dietName = dietName;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getDietDescription() {
+        return dietDescription;
+    }
+
+    public void setDietDescription(String dietDescription) {
+        this.dietDescription = dietDescription;
+    }
+
+    public DietItem(String dietName, String dietDescription, String imageUrl) {
+        this.dietName = dietName;
+        this.dietDescription=dietDescription;
+        this.imageUrl=imageUrl;
     }
 
     public String getDietName() {
         return dietName;
     }
 
-    public int getDietImageResourceId() {
-        return dietImageResourceId;
+    public String getDietImageResourceId() {
+        return dietDescription;
     }
 }

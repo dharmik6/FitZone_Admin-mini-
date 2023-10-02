@@ -1,6 +1,7 @@
 package com.example.fitzoneadmin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
     private List<DietItem> dietItems;
     private Context context;
+    private DietAdapter.OnItemClickListener onItemClickListener;
 
     public DietAdapter(Context context, List<DietItem> dietItems) {
         this.context = context;
@@ -31,9 +35,34 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        DietItem item = dietItems.get(position);
-        holder.dietNameTextView.setText(item.getDietName());
-        holder.dietImageView.setImageResource(item.getDietImageResourceId());
+        DietItem currentItem = dietItems.get(position);
+        if (currentItem != null) {
+            String dietName = currentItem.getDietName();
+            String imageUrl = currentItem.getImageUrl();
+
+            // Check if the values are not null before using them
+            if (dietName != null) {
+                holder.dietNameTextView.setText(dietName);
+            } else {
+                holder.dietNameTextView.setText("");
+            }
+
+            // Load the image using Picasso
+            if (imageUrl != null && !imageUrl.isEmpty()) {
+                Picasso.get().load(imageUrl).into(holder.dietImageView);
+            }
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, DietData.class);
+
+                    // Add the FLAG_ACTIVITY_NEW_TASK flag
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
@@ -50,5 +79,8 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
             dietNameTextView = itemView.findViewById(R.id.dietNameTextView);
             dietImageView = itemView.findViewById(R.id.dietImageView);
         }
+    }
+
+    public class OnItemClickListener {
     }
 }

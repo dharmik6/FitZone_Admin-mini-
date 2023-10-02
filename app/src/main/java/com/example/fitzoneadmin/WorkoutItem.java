@@ -11,6 +11,10 @@ public class WorkoutItem {
         this.workoutImageResourceId = workoutImageResourceId;
     }
 
+    public WorkoutItem(String workoutName) {
+        this.workoutName=workoutName;
+    }
+
     public String getWorkoutDescription() {
         return workoutDescription;
     }

@@ -10,11 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 public class DietData extends AppCompatActivity {
 
     ImageView dietImage ;
     TextView dietName , dietDesc ;
     Button update , delete ;
+    private StorageReference storageReference;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,10 @@ public class DietData extends AppCompatActivity {
         dietDesc = findViewById(R.id.diet_description);
         update = findViewById(R.id.btn_Update);
         delete = findViewById(R.id.btn_Delete);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("diets");
+        storageReference = FirebaseStorage.getInstance().getReference().child("diet_images");
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
