@@ -84,6 +84,10 @@
                         android:textColorHint="@color/text_color"
                         tools:ignore="VisualLintTextFieldSize" />
 
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -119,6 +123,7 @@
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="25dp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -170,8 +175,6 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

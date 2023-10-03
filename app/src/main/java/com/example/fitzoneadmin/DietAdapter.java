@@ -38,6 +38,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
         DietItem currentItem = dietItems.get(position);
         if (currentItem != null) {
             String dietName = currentItem.getDietName();
+            String dirtDescription = currentItem.getDietDescription();
             String imageUrl = currentItem.getImageUrl();
 
             // Check if the values are not null before using them
@@ -56,7 +57,10 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DietData.class);
-
+                    intent.putExtra("wname", dietName);
+                    intent.putExtra("wdes", dirtDescription);
+                    // Pass the URL or other identifier for the image, which can be loaded in WorkoutData activity
+                    intent.putExtra("imag", imageUrl);
                     // Add the FLAG_ACTIVITY_NEW_TASK flag
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);

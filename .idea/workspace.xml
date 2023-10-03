@@ -11,7 +11,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64743f73-6f9a-4e6e-add4-46935ab9b38f" name="Changes" comment="diet is insert and show">
+    <list default="true" id="64743f73-6f9a-4e6e-add4-46935ab9b38f" name="Changes" comment="diet is insert and">
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
@@ -22,11 +22,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_workout_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_workout_data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutEdit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_diet_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_diet_add.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,7 +334,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696274717987</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="diet is insert and">
+      <created>1696284216318</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696284216318</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -349,6 +362,7 @@
     <MESSAGE value="all adapter are clear" />
     <MESSAGE value="workout is insert and show" />
     <MESSAGE value="diet is insert and show" />
-    <option name="LAST_COMMIT_MESSAGE" value="diet is insert and show" />
+    <MESSAGE value="diet is insert and" />
+    <option name="LAST_COMMIT_MESSAGE" value="diet is insert and" />
   </component>
 </project>

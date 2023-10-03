@@ -4,6 +4,7 @@ public class DietItem {
     private String dietName;
     private String imageUrl;
     private String dietDescription;
+    private String dietFocusArea;
 
     public DietItem(String dietName, String dietImageResourceId) {
         this.dietName = dietName;
@@ -47,4 +48,5 @@ public class DietItem {
     public String getDietImageResourceId() {
         return dietDescription;
     }
+
 }

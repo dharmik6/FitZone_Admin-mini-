@@ -38,8 +38,11 @@ public class DietData extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("diets");
-        storageReference = FirebaseStorage.getInstance().getReference().child("diet_images");
+        storageReference = FirebaseStorage.getInstance().getReference().child("dietImageResourceId");
 
+        dietName.setText(getIntent().getStringExtra("wname"));
+        dietDesc.setText(getIntent().getStringExtra("wdes"));
+        dietImage.setImageResource(getIntent().getIntExtra("imag",0));
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

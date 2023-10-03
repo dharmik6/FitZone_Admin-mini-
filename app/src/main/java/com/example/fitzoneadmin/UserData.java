@@ -49,6 +49,15 @@ public class UserData extends AppCompatActivity {
         databaseReference = database.getReference("users").child(username);
         setDatabaseListener();
 
+        nameTextView.setText(getIntent().getStringExtra("username"));
+        numberTextView.setText(getIntent().getStringExtra("number"));
+        emailTextView.setText(getIntent().getStringExtra("email"));
+        genderTextView.setText(getIntent().getStringExtra("gender"));
+        heightTextView.setText(getIntent().getStringExtra("heigth"));
+        weightTextView.setText(getIntent().getStringExtra("weigth"));
+        ageTextView.setText(getIntent().getStringExtra("age"));
+
+
         nameTextView.setText(getIntent().getStringExtra("name"));
     }
 

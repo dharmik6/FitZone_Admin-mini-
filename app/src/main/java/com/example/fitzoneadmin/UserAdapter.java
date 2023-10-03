@@ -52,6 +52,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserItem item = userItems.get(position);
         holder.userNameTextView.setText(item.getUserName());
+//        holder.userNameTextView.setText(item.getGender());
         holder.userImageView.setImageResource(item.getUserImageResourceId());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -61,9 +62,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 if (position != RecyclerView.NO_POSITION) {
                     UserItem item = userItems.get(position);
                     String username = item.getUserName();
+                    String email = item.getEmail();
+                    String age = item.getAge();
+                    String gender = item.getNumber();
+                    String hiegth = item.getHiegth();
+                    String wirgth = item.getWiegth();
 
                     Intent intent = new Intent(context, UserData.class);
-                    intent.putExtra("username", username); // Pass the username as an extra
+                    intent.putExtra("username", username);// Pass the username as an extra
+                    intent.putExtra("email", email);
+                    intent.putExtra("age", age);
+                    intent.putExtra("gender", gender);
+                    intent.putExtra("hiegth", hiegth);
+                    intent.putExtra("wirgth", wirgth);
+
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Add this flag
                     context.startActivity(intent);
                 } else {
@@ -91,21 +103,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             super(itemView);
             userNameTextView = itemView.findViewById(R.id.userNameTextView);
             userImageView = itemView.findViewById(R.id.userImageView);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        UserItem item = userItems.get(position);
-                        String username = item.getUserName();
-
-                        Intent intent = new Intent(context, UserData.class);
-                        intent.putExtra("user name", username); // Pass the username as an extra
-                        context.startActivity(intent);
-                    }
-                }
-            });
         }
     }
 }

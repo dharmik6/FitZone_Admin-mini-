@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class WorkoutData extends AppCompatActivity {
     Button update , delete ;
@@ -32,9 +34,14 @@ public class WorkoutData extends AppCompatActivity {
         des=findViewById(R.id.des);
         focus=findViewById(R.id.focus);
         image=findViewById(R.id.image1);
-wornames.setText(getIntent().getStringExtra("wname"));
-        des.setText(getIntent().getStringExtra("wfocus"));
-        focus.setText(getIntent().getStringExtra("wdes"));
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("workouts");
+//        storageReference = FirebaseStorage.getInstance().getReference().child("dietImageResourceId");
+
+        focus.setText(getIntent().getStringExtra("wfocus"));
+        wornames.setText(getIntent().getStringExtra("wname"));
+        des.setText(getIntent().getStringExtra("wdes"));
         image.setImageResource(getIntent().getIntExtra("imag",0));
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,15 +55,15 @@ wornames.setText(getIntent().getStringExtra("wname"));
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the username from the intent
-                String username = getIntent().getStringExtra("workoutname");
+                // Get the workout name from the intent
+                String workoutName = getIntent().getStringExtra("workoutname");
 
-                // Delete the user's data
-                DatabaseReference userRef = databaseReference.getRoot().child("users").child(username);
-                userRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                // Delete the workout data
+                DatabaseReference workoutRef = databaseReference.child("workouts").child(workoutName);
+                workoutRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        // User data has been successfully deleted
+                        // Workout data has been successfully deleted
                         Toast.makeText(WorkoutData.this, "Record Deleted", Toast.LENGTH_SHORT).show();
                         onBackPressed(); // Go back to the previous screen
                     }
@@ -67,8 +74,6 @@ wornames.setText(getIntent().getStringExtra("wname"));
                         Toast.makeText(WorkoutData.this, "Failed to delete record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-                Toast.makeText(WorkoutData.this, "Record Deleted", Toast.LENGTH_SHORT).show();
-                onBackPressed();
             }
         });
 
