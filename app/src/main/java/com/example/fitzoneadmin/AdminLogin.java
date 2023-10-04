@@ -40,9 +40,6 @@ public class AdminLogin extends AppCompatActivity {
                 }
                 if (TextUtils.isEmpty(admin_password.getText().toString())) {
                     admin_password.setError("Password is compulsary");
-                } else {
-                    Intent homeIntent = new Intent(AdminLogin.this, AdminHomePage.class);
-                    startActivity(homeIntent);
                 }
 
             }

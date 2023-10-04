@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
@@ -24,6 +26,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         this.context = context;
         this.userItems = userItems;
     }
+
+
 
     public void setAdapterPosition(int adapterPosition) {
         this.adapterPosition = adapterPosition;
@@ -52,8 +56,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         UserItem item = userItems.get(position);
         holder.userNameTextView.setText(item.getUserName());
-//        holder.userNameTextView.setText(item.getGender());
-        holder.userImageView.setImageResource(item.getUserImageResourceId());
+
+        // Load user image from Firebase using Glide
+        String imageUrl = item.getUserImageResourceId(); // Assuming you have a method to get the image URL from your UserItem class
+        Glide.with(context)
+                .load(imageUrl) // Load image URL
+                .into(holder.userImageView); // Set the loaded image to the ImageView
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +83,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     intent.putExtra("gender", gender);
                     intent.putExtra("hiegth", hiegth);
                     intent.putExtra("wirgth", wirgth);
+                    intent.putExtra("userimage",imageUrl);
 
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Add this flag
                     context.startActivity(intent);

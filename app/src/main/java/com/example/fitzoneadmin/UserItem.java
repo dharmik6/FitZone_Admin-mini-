@@ -1,7 +1,7 @@
 package com.example.fitzoneadmin;
 public class UserItem {
     private String userName,email,number,age,hiegth,wiegth,gender;
-    private int userImageResourceId;
+    private String userImageResourceId;
 
     public String getEmail() {
         return email;
@@ -59,11 +59,11 @@ public class UserItem {
         this.userName = userName;
     }
 
-    public int getUserImageResourceId() {
+    public String getUserImageResourceId() {
         return userImageResourceId;
     }
 
-    public void setUserImageResourceId(int userImageResourceId) {
+    public void setUserImageResourceId(String userImageResourceId) {
         this.userImageResourceId = userImageResourceId;
     }
 }
