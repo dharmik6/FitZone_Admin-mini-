@@ -102,9 +102,12 @@ public class UserList extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String userName = dataSnapshot.child("name").getValue(String.class);
+                    String uImage = dataSnapshot.child("img").getValue(String.class);
+
                     if (userName != null) {
                         UserItem userItem = new UserItem();
                         userItem.setUserName(userName);
+                        userItem.setUserImageResourceId(uImage);
 //                        userItem.setUserImageResourceId(userImageResourceId.intValue());
 
                         userItems.add(userItem);
