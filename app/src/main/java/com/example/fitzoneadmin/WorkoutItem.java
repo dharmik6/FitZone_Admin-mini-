@@ -5,29 +5,18 @@ public class WorkoutItem {
     private String workoutFocusArea;
     private String workoutImageResourceId;
     private String workoutDescription;
+
+    public WorkoutItem(String workoutName, String workoutFocusArea, String workoutImageResourceId, String workoutDescription) {
+        this.workoutName = workoutName;
+        this.workoutFocusArea = workoutFocusArea;
+        this.workoutImageResourceId = workoutImageResourceId;
+        this.workoutDescription = workoutDescription;
+    }
+
     public WorkoutItem(String workoutName, String workoutFocusArea, String workoutImageResourceId) {
         this.workoutName = workoutName;
         this.workoutFocusArea = workoutFocusArea;
         this.workoutImageResourceId = workoutImageResourceId;
-    }
-
-    public WorkoutItem(String workoutName) {
-        this.workoutName=workoutName;
-    }
-
-    public String getWorkoutDescription() {
-        return workoutDescription;
-    }
-
-    public void setWorkoutDescription(String workoutDescription) {
-        this.workoutDescription = workoutDescription;
-    }
-
-    public WorkoutItem(String workoutName, String workoutFocusArea, String workoutDescription, String workoutImageResourceId) {
-        this.workoutName = workoutName;
-        this.workoutFocusArea = workoutFocusArea;
-        this.workoutImageResourceId = workoutImageResourceId;
-        this.workoutDescription=workoutDescription;
     }
 
     public String getWorkoutName() {
@@ -54,9 +43,11 @@ public class WorkoutItem {
         this.workoutImageResourceId = workoutImageResourceId;
     }
 
-    public WorkoutItem(String workoutName, String workoutFocusArea) {
-        this.workoutName=workoutName;
-        this.workoutFocusArea=workoutFocusArea;
-        // Default constructor required for Firebase
+    public String getWorkoutDescription() {
+        return workoutDescription;
+    }
+
+    public void setWorkoutDescription(String workoutDescription) {
+        this.workoutDescription = workoutDescription;
     }
 }

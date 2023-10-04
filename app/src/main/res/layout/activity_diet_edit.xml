@@ -144,7 +144,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btn_diet_submit"
+                    android:id="@+id/updateData"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="70dp"
@@ -152,7 +152,7 @@
                     android:background="@drawable/button1"
                     android:elevation="10dp"
                     android:fontFamily="@font/robotoslab_regular"
-                    android:text="@string/submit"
+                    android:text="Update"
                     android:textAllCaps="false"
                     android:textSize="26sp"
                     android:textStyle="bold"

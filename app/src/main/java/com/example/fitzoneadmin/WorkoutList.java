@@ -112,9 +112,10 @@ public class WorkoutList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String workoutName = dataSnapshot.child("workoutName").getValue(String.class);
                     String workoutFocusArea = dataSnapshot.child("workoutFocusArea").getValue(String.class);
+                    String workoutImageResourceId = dataSnapshot.child("workoutImageResourceId").getValue(String.class); // Change to "imageUrl"
 
-                    if (workoutName != null && workoutFocusArea != null) {
-                        WorkoutItem workoutItem = new WorkoutItem(workoutName, workoutFocusArea);
+                    if (workoutName != null && workoutFocusArea != null&& workoutImageResourceId != null) {
+                        WorkoutItem workoutItem = new WorkoutItem(workoutName, workoutFocusArea,workoutImageResourceId);
                         workoutItems.add(workoutItem);
                     }
                 }

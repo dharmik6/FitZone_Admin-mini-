@@ -74,9 +74,9 @@ public class WorkoutData extends AppCompatActivity {
                         Toast.makeText(WorkoutData.this, "Failed to delete record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
-
         //**********************************
         //back page button
         ImageView back_page = findViewById(R.id.btn_next_page);
@@ -88,3 +88,22 @@ public class WorkoutData extends AppCompatActivity {
         });
     }
 }
+// Get the workout name from the intent
+//                String workoutName = getIntent().getStringExtra("workoutname");
+//
+//                // Delete the workout data
+//                DatabaseReference workoutRef = databaseReference.child("workouts").child(workoutName);
+//                workoutRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        // Workout data has been successfully deleted
+//                        Toast.makeText(WorkoutData.this, "Record Deleted", Toast.LENGTH_SHORT).show();
+//                        onBackPressed(); // Go back to the previous screen
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // Handle the case where deletion fails
+//                        Toast.makeText(WorkoutData.this, "Failed to delete record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
