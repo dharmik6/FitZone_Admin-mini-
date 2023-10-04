@@ -47,14 +47,7 @@ public class DietData extends AppCompatActivity {
 //        databaseReference = database.getReference("diets");
 //        storageReference = FirebaseStorage.getInstance().getReference().child("diet_images");
 
-//        String dietNameValue = getIntent().getStringExtra("dname");
-//        dietDesc.setText(getIntent().getStringExtra("desc"));
-//        String dietimg = getIntent().getStringExtra("imag");
 
-
-        dietName.setText(getIntent().getStringExtra("dname"));
-        dietDesc.setText(getIntent().getStringExtra("desc"));
-        dietImage.setImageResource(getIntent().getIntExtra("imag",0));
         deleteDataOneItemAtATime();
         update.setOnClickListener(new View.OnClickListener() {
             @Override

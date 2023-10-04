@@ -59,10 +59,11 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DietData.class);
+
                     intent.putExtra("dname", dietName);
-                    intent.putExtra("desc",dirtDescription);
+                    intent.putExtra("desc", dirtDescription);
                     intent.putExtra("imag", imageUrl);
-                    // Add the FLAG_ACTIVITY_NEW_TASK flag
+
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
