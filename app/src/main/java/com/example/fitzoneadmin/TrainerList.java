@@ -15,19 +15,25 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TrainerList extends AppCompatActivity {
-
+TextView add_trainer ;
     private RecyclerView recyclerView;
     private TrainerAdapter adapter;
     private List<TrainerItem> trainerItems = new ArrayList<>();
-
+    DatabaseReference databaseReference;
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
     @Override
@@ -35,21 +41,34 @@ public class TrainerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_list);
 
-        trainerItems.add(new TrainerItem("Trainer 1", R.drawable.baseline_image_24));
-        trainerItems.add(new TrainerItem("Trainer 2", R.drawable.baseline_image_24));
-        trainerItems.add(new TrainerItem("Trainer 3", R.drawable.baseline_image_24));
 
         recyclerView = findViewById(R.id.trainer_recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TrainerAdapter(this, trainerItems);
+        recyclerView.setAdapter(adapter);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("trainer");
 
         adapter = new TrainerAdapter(getApplicationContext(), trainerItems);
         recyclerView.setAdapter(adapter);
+
+        setDatabaseListener();
 
         //***************************************************
         //navigation bar
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigationview);
         ImageView menu = findViewById(R.id.menu);
+        add_trainer = findViewById(R.id.add_trainer);
+        add_trainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActivity(TrainerList.this,TrainerAdd.class);
+            }
+        });
 
 
 
@@ -82,6 +101,34 @@ public class TrainerList extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    private void setDatabaseListener() {
+        ImageView menu = findViewById(R.id.menu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                trainerItems.clear();
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+
+                }
+                adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle database error
+            }
+        });
+
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

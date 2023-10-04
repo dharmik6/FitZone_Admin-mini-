@@ -5,7 +5,7 @@ public class WorkoutItem {
     private String workoutFocusArea;
     private String workoutImageResourceId;
     private String workoutDescription;
-    public WorkoutItem(String workoutName, String workoutFocusArea, String workoutImageResourceId) {
+    public WorkoutItem() {
         this.workoutName = workoutName;
         this.workoutFocusArea = workoutFocusArea;
         this.workoutImageResourceId = workoutImageResourceId;

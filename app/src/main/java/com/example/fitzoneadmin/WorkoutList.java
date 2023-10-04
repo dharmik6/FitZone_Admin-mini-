@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,40 +36,51 @@ public class WorkoutList extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
     DatabaseReference databaseReference;
+    FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
-        //********************************************
-        // add new item
-        add_work = findViewById(R.id.add_workout);
 
+
+        recyclerView = findViewById(R.id.work_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new WorkoutAdapter(this, workoutItems);
+        recyclerView.setAdapter(adapter);
+
+        // Initialize Firebase
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("workouts");
+
+        setDatabaseListener();
+
+        // Initialize UI components
+        add_work = findViewById(R.id.add_workout);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navigationview);
+        ImageView menu = findViewById(R.id.menu);
+
+        // Handle click events
         add_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iworkadd = new Intent(WorkoutList.this,WorkoutAdd.class);
+                Intent iworkadd = new Intent(WorkoutList.this, WorkoutAdd.class);
                 startActivity(iworkadd);
             }
         });
 
-
-        //***************************************************
-        //navigation bar
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.navigationview);
-        ImageView menu = findViewById(R.id.menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openDrawer(drawerLayout);
             }
         });
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-
                 if (id == R.id.user) {
                     redirectActivity(WorkoutList.this, UserList.class);
                 } else if (id == R.id.trainer) {
@@ -82,25 +94,9 @@ public class WorkoutList extends AppCompatActivity {
                 }
 
                 closeDrawer(drawerLayout);
-
                 return true;
             }
         });
-
-        recyclerView = findViewById(R.id.work_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new WorkoutAdapter(this, workoutItems);
-        recyclerView.setAdapter(adapter);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("workouts");
-
-        adapter = new WorkoutAdapter(getApplicationContext(), workoutItems);
-        recyclerView.setAdapter(adapter);
-
-        setDatabaseListener();
     }
 
     private void setDatabaseListener() {
@@ -110,15 +106,14 @@ public class WorkoutList extends AppCompatActivity {
                 workoutItems.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String workoutName = dataSnapshot.child("workoutName").getValue(String.class);
-                    String workoutFocusArea = dataSnapshot.child("workoutFocusArea").getValue(String.class);
-
-                    if (workoutName != null && workoutFocusArea != null) {
-                        WorkoutItem workoutItem = new WorkoutItem(workoutName, workoutFocusArea);
+                    WorkoutItem workoutItem = dataSnapshot.getValue(WorkoutItem.class);
+                    if (workoutItem != null) {
                         workoutItems.add(workoutItem);
                     }
                 }
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+                // Add debug logs to verify data retrieval
+                Log.d("FirebaseData", "WorkoutItems: " + workoutItems.toString());
             }
 
             @Override
@@ -126,9 +121,7 @@ public class WorkoutList extends AppCompatActivity {
                 // Handle database error
             }
         });
-
     }
-
     public static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
     }
