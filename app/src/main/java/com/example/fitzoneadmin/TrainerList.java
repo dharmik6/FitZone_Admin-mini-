@@ -43,22 +43,6 @@ TextView add_trainer ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_list);
 
-
-        recyclerView = findViewById(R.id.trainer_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TrainerAdapter(this, trainerItems);
-        recyclerView.setAdapter(adapter);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("trainer");
-
-        adapter = new TrainerAdapter(getApplicationContext(), trainerItems);
-        recyclerView.setAdapter(adapter);
-
-        setDatabaseListener();
-
         //***************************************************
         //navigation bar
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -112,24 +96,39 @@ TextView add_trainer ;
                 return true;
             }
         });
-    }
-    private void setDatabaseListener() {
-        ImageView menu = findViewById(R.id.menu);
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDrawer(drawerLayout);
-            }
-        });
+        //**********************************
+        recyclerView = findViewById(R.id.trainer_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TrainerAdapter(this, trainerItems);
+        recyclerView.setAdapter(adapter);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("trainers");
+
+        setDatabaseListener();
+    }
+
+    private void setDatabaseListener() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 trainerItems.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    String trainername = dataSnapshot.child("name").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
+                    String age = dataSnapshot.child("age").getValue(String.class);
+                    String phone = dataSnapshot.child("Number").getValue(String.class);
+                    String gender = dataSnapshot.child("gender").getValue(String.class);
+                    String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class); // Change to "imageUrl"
 
 
+                    if (trainername != null && imageUrl != null) {
+                        TrainerItem trainerItem = new TrainerItem(trainername, imageUrl);
+                        trainerItems.add(trainerItem);
+                    }
                 }
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
             }
@@ -139,7 +138,6 @@ TextView add_trainer ;
                 // Handle database error
             }
         });
-
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

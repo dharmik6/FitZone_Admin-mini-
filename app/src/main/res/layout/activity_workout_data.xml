@@ -72,7 +72,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/worname"
+                    android:id="@+id/work_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -133,7 +133,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/des"
+                android:id="@+id/workdesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
