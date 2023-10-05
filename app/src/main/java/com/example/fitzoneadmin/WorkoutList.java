@@ -44,17 +44,6 @@ public class WorkoutList extends AppCompatActivity {
         setContentView(R.layout.activity_workout_list);
 
 
-        recyclerView = findViewById(R.id.work_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new WorkoutAdapter(this, workoutItems);
-        recyclerView.setAdapter(adapter);
-
-        // Initialize Firebase
-        database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("workouts");
-
-        setDatabaseListener();
-
         // Initialize UI components
         add_work = findViewById(R.id.add_workout);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -97,6 +86,16 @@ public class WorkoutList extends AppCompatActivity {
                 return true;
             }
         });
+        recyclerView = findViewById(R.id.work_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new WorkoutAdapter(this, workoutItems);
+        recyclerView.setAdapter(adapter);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("workouts");
+        setDatabaseListener();
     }
 
     private void setDatabaseListener() {
@@ -106,14 +105,16 @@ public class WorkoutList extends AppCompatActivity {
                 workoutItems.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    WorkoutItem workoutItem = dataSnapshot.getValue(WorkoutItem.class);
-                    if (workoutItem != null) {
+                    String workName = dataSnapshot.child("wname").getValue(String.class);
+                    String focus = dataSnapshot.child("focus").getValue(String.class);
+                    String imageUrl = dataSnapshot.child("imag").getValue(String.class); // Change to "imageUrl"
+
+                    if (workName != null && imageUrl != null && focus != null) {
+                        WorkoutItem workoutItem = new WorkoutItem(workName,focus, imageUrl);
                         workoutItems.add(workoutItem);
                     }
                 }
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
-                // Add debug logs to verify data retrieval
-                Log.d("FirebaseData", "WorkoutItems: " + workoutItems.toString());
             }
 
             @Override

@@ -27,6 +27,7 @@ public class WorkoutData extends AppCompatActivity {
     DatabaseReference databaseReference;
     ImageView workimg ;
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_data);

@@ -92,6 +92,37 @@
                     android:orientation="vertical"
                     android:paddingHorizontal="30dp"
                     android:layout_marginTop="40dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/patuaone_regular"
+                        android:text="Trainer Phone Number"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        />
+                    <EditText
+                        android:id="@+id/add_tr_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/textbox1"
+                        android:hint="trainer phone number"
+                        android:inputType="phone"
+                        android:paddingHorizontal="25dp"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_color"
+                        tools:ignore="VisualLintTextFieldSize" />
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="30dp"
+                    android:layout_marginTop="40dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -124,34 +155,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/patuaone_regular"
-                        android:text="Trainer Phone Number"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        />
-                    <EditText
-                        android:id="@+id/add_tr_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/textbox1"
-                        android:hint="trainer phone number"
-                        android:inputType="text"
-                        android:paddingHorizontal="25dp"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/text_color"
-                        tools:ignore="VisualLintTextFieldSize" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="30dp"
-                    android:layout_marginTop="40dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/patuaone_regular"
                         android:text="age"
                         android:textColor="@color/black"
                         android:textSize="25dp"
@@ -163,7 +166,8 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/textbox1"
                         android:hint="trainer age"
-                        android:inputType="text"
+                        android:inputType="number"
+                        android:maxLength="2"
                         android:paddingHorizontal="25dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_color"
@@ -191,7 +195,7 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/textbox1"
                         android:hint="trainer email"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                         android:paddingHorizontal="25dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_color"
@@ -219,7 +223,7 @@
                         android:layout_marginTop="20dp"
                         android:background="@drawable/textbox1"
                         android:hint="password"
-                        android:inputType="text"
+                        android:inputType="textPassword"
                         android:paddingHorizontal="25dp"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_color"
@@ -248,8 +252,6 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-
 
 
 </RelativeLayout>
