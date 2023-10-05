@@ -40,7 +40,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
 
         // Load user image from Firebase using Glide
-        String imageUrl = currentItem.getDietImageResourceId();
+        String imageUrl = currentItem.getImageUrl();
         Glide.with(context)
                 .load(imageUrl)
                 .into(holder.dietImageView);

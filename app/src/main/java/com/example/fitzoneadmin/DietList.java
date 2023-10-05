@@ -117,8 +117,11 @@ public class DietList extends AppCompatActivity {
                     String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class); // Change to "imageUrl"
                     String dietdesc = dataSnapshot.child("dietDescription").getValue(String.class); // Change to "imageUrl"
 
-                    if (dietName != null && imageUrl != null) {
-                        DietItem dietItem = new DietItem(dietName, imageUrl);
+
+
+                    if (dietName != null ) {
+                        // Create WorkoutItem objects and add them to the workoutItems list
+                        DietItem dietItem = new DietItem(dietName,imageUrl, dietdesc);
                         dietItems.add(dietItem);
                     }
                 }

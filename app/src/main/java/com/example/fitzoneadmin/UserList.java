@@ -116,6 +116,7 @@ public class UserList extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String userName = dataSnapshot.child("name").getValue(String.class);
                     String email = dataSnapshot.child("email").getValue(String.class);
+                    String age = dataSnapshot.child("age").getValue(String.class);
 //                    Long ageLong = dataSnapshot.child("age").getValue(Long.class);
                     Long heightLong = dataSnapshot.child("height").getValue(Long.class);
                     Long weightLong = dataSnapshot.child("weight").getValue(Long.class);
@@ -124,14 +125,14 @@ public class UserList extends AppCompatActivity {
                     String uImage = dataSnapshot.child("img").getValue(String.class);
 
                     // Convert Long values to String
-//                    String age = String.valueOf(ageLong);
+//                    String age = String.valueOf("age");
                     String height = String.valueOf(heightLong);
                     String weight = String.valueOf(weightLong);
 
                     if (userName != null) {
                         UserItem userItem = new UserItem();
                         userItem.setUserName(userName);
-//                        userItem.setAge(age);
+                        userItem.setAge(age);
                         userItem.setGender(gender);
                         userItem.setEmail(email);
                         userItem.setNumber(phone);

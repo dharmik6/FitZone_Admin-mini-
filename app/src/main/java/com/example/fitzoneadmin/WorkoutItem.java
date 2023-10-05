@@ -15,6 +15,12 @@ public class WorkoutItem {
         this.workoutName=workoutName;
     }
 
+    public WorkoutItem(String workoutName, String focusArea, String description) {
+        this.workoutName = workoutName;
+        this.workoutFocusArea = focusArea;
+        this.workoutImageResourceId = description;
+    }
+
     public String getWorkoutDescription() {
         return workoutDescription;
     }
