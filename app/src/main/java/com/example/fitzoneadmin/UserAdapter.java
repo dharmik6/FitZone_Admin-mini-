@@ -64,11 +64,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     Intent intent = new Intent(context, UserData.class);
                     intent.putExtra("username", username);
                     intent.putExtra("number", email);
-                    intent.putExtra("age", age);
-                    intent.putExtra("number", number);
-                    intent.putExtra("gender", gender);
-                    intent.putExtra("height", height);
-                    intent.putExtra("weight", weight);
+//                    intent.putExtra("age", age);
+//                    intent.putExtra("number", number);
+//                    intent.putExtra("gender", gender);
+//                    intent.putExtra("height", height);
+//                    intent.putExtra("weight", weight);
                     intent.putExtra("userimage", imageUrl);
 
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

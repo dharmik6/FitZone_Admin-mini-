@@ -1,16 +1,12 @@
 package com.example.fitzoneadmin;
-
 public class TrainerItem {
-    private String trainerName,email,gender,age,phone;
+    private String trainerName,email,number,age,gender;
     private String trainerImageResourceId;
 
-    public TrainerItem(String trainerName,String email) {
-        this.trainerName = trainerName;
-        this.email = email;
-        this.gender = gender;
-        this.age = age;
-        this.phone = phone;
-        this.trainerImageResourceId = trainerImageResourceId;
+
+
+    public String getEmail() {
+        return email;
     }
 
     public String getTrainerName() {
@@ -21,20 +17,24 @@ public class TrainerItem {
         this.trainerName = trainerName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getTrainerImageResourceId() {
+        return trainerImageResourceId;
+    }
+
+    public void setTrainerImageResourceId(String trainerImageResourceId) {
+        this.trainerImageResourceId = trainerImageResourceId;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
+    public String getNumber() {
+        return number;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getAge() {
@@ -45,20 +45,16 @@ public class TrainerItem {
         this.age = age;
     }
 
-    public String getPhone() {
-        return phone;
+
+
+    public String getGender() {
+        return gender;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getTrainerImageResourceId() {
-        return trainerImageResourceId;
-    }
 
-    public void setTrainerImageResourceId(String trainerImageResourceId) {
-        this.trainerImageResourceId = trainerImageResourceId;
-    }
+
 }
-

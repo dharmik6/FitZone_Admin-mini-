@@ -52,7 +52,7 @@ public class TrainerAdapter extends RecyclerView.Adapter<TrainerAdapter.ViewHold
                     // Get trainer data
                     String trainername = item.getTrainerName();
                     String email = item.getEmail();
-                    String phone = item.getPhone();
+                    String number = item.getNumber();
                     String age = item.getAge();
                     String gender = item.getGender();
 
@@ -60,7 +60,7 @@ public class TrainerAdapter extends RecyclerView.Adapter<TrainerAdapter.ViewHold
                     Intent intent = new Intent(context, TrainerData.class);
                     intent.putExtra("trainername", trainername);
                     intent.putExtra("email", email);
-                    intent.putExtra("phone", phone);
+                    intent.putExtra("number", number);
                     intent.putExtra("age", age);
                     intent.putExtra("gender", gender);
                     intent.putExtra("trainerimage", imageUrl);

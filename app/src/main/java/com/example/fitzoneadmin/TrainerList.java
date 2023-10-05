@@ -117,19 +117,29 @@ TextView add_trainer ;
                 trainerItems.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String trainername = dataSnapshot.child("name").getValue(String.class);
-                    String email = dataSnapshot.child("email").getValue(String.class);
+                    String trainerName = dataSnapshot.child("name").getValue(String.class);
                     String age = dataSnapshot.child("age").getValue(String.class);
-                    String phone = dataSnapshot.child("Number").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
                     String gender = dataSnapshot.child("gender").getValue(String.class);
-                    String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class); // Change to "imageUrl"
+                    String number = dataSnapshot.child("Number").getValue(String.class);
+                    String tImage = dataSnapshot.child("img").getValue(String.class);
+
+                    // Convert Long values to String
 
 
-                    if (trainername != null && imageUrl != null) {
-                        TrainerItem trainerItem = new TrainerItem(trainername, imageUrl);
+                    if (trainerName != null) {
+                        TrainerItem trainerItem = new TrainerItem();
+                        trainerItem.setTrainerName(trainerName);
+                        trainerItem.setAge(age);
+                        trainerItem.setGender(gender);
+                        trainerItem.setEmail(email);
+                        trainerItem.setNumber(number);
+                        trainerItem.setTrainerImageResourceId(tImage);
+
                         trainerItems.add(trainerItem);
                     }
                 }
+
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
             }
 
@@ -138,6 +148,7 @@ TextView add_trainer ;
                 // Handle database error
             }
         });
+
     }
 
     public static void openDrawer(DrawerLayout drawerLayout) {

@@ -138,9 +138,9 @@ public class UserList extends AppCompatActivity {
                         userItem.setUserImageResourceId(uImage);
 
                         userItems.add(userItem);
-
                     }
                 }
+
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
             }
 
