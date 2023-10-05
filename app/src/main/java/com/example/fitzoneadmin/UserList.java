@@ -113,13 +113,25 @@ public class UserList extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String userName = dataSnapshot.child("name").getValue(String.class);
+                    String email = dataSnapshot.child( "email").getValue(String.class);
+                   String age = dataSnapshot.child("age").getValue(String.class);
+                   String gender = dataSnapshot.child("gender").getValue(String.class);
+                    String phone = dataSnapshot.child("Number").getValue(String.class);
+                    String height = dataSnapshot.child("height").getValue(String.class);
+                    String weight = dataSnapshot.child("weight").getValue(String.class);
                     String uImage = dataSnapshot.child("img").getValue(String.class);
 
                     if (userName != null) {
                         UserItem userItem = new UserItem();
                         userItem.setUserName(userName);
+                        userItem.setAge(age);
+                        userItem.setGender(gender);
+                        userItem.setEmail(email);
+                       userItem.setNumber(phone);
+                        userItem.setHiegth(height);
+                        userItem.setWiegth(weight);
                         userItem.setUserImageResourceId(uImage);
-//                        userItem.setUserImageResourceId(userImageResourceId.intValue());
+
 
                         userItems.add(userItem);
                     }

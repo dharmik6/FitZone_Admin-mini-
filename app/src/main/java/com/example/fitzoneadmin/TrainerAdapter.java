@@ -1,6 +1,7 @@
 package com.example.fitzoneadmin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -30,10 +33,45 @@ public class TrainerAdapter extends RecyclerView.Adapter<TrainerAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TrainerItem item = trainerItems.get(position);
-        holder.trainerNameTextView.setText(item.getTrainerName());
-        holder.trainerImageView.setImageResource(item.getTrainerImageResourceId());
+    public void onBindViewHolder(@NonNull TrainerAdapter.ViewHolder holder, int position) {
+        TrainerItem currentItem = trainerItems.get(position);
+        holder.trainerNameTextView.setText(currentItem.getTrainerName());
+
+        // Load trainer image from Firebase using Glide
+        String imageUrl = currentItem.getTrainerImageResourceId();
+        Glide.with(context)
+                .load(imageUrl)
+                .into(holder.trainerImageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                TrainerItem item = trainerItems.get(position);
+                if (position != RecyclerView.NO_POSITION) {
+                    // Get trainer data
+                    String trainername = item.getTrainerName();
+                    String email = item.getEmail();
+                    String phone = item.getPhone();
+                    String age = item.getAge();
+                    String gender = item.getGender();
+
+                    // Open TrainerData activity and pass the data
+                    Intent intent = new Intent(context, TrainerData.class);
+                    intent.putExtra("trainername", trainername);
+                    intent.putExtra("email", email);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("age", age);
+                    intent.putExtra("gender", gender);
+                    intent.putExtra("trainerimage", imageUrl);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                } else {
+                    // Handle the case where the position is invalid or the view holder is detached.
+                    // You can log an error or display a message to the user.
+                }
+            }
+        });
     }
 
     @Override
