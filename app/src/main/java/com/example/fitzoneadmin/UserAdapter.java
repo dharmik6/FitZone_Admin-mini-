@@ -63,7 +63,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                     Intent intent = new Intent(context, UserData.class);
                     intent.putExtra("username", username);
-                    intent.putExtra("email", email);
+                    intent.putExtra("number", email);
                     intent.putExtra("age", age);
                     intent.putExtra("number", number);
                     intent.putExtra("gender", gender);

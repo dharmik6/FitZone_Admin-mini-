@@ -21,9 +21,11 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
     private List<WorkoutItem> workoutItems;
     private Context context;
 
+    //***********************************
     public WorkoutAdapter(Context context, List<WorkoutItem> workoutItems) {
         this.context = context;
         this.workoutItems = workoutItems;
+
     }
 
     public WorkoutAdapter(String workName, String focusArea, String workoutDesc, String toString) {
@@ -36,10 +38,10 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
         return new WorkoutAdapter.ViewHolder(view);
     }
 
-    @Override
     public void onBindViewHolder(@NonNull WorkoutAdapter.ViewHolder holder, int position) {
         WorkoutItem currentItem = workoutItems.get(position);
         holder.workoutNameTextView.setText(currentItem.getWorkoutName());
+
 
         // Load user image from Firebase using Glide
         String imageUrl = currentItem.getWorkoutImageResourceId();
@@ -56,7 +58,6 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
                     String workoutname = item.getWorkoutName();
                     String workoutesc = item.getWorkoutDescription();
                     String focus = item.getWorkoutFocusArea();
-
                     Intent intent = new Intent(context, WorkoutData.class);
                     intent.putExtra("workoutname", workoutname);
                     intent.putExtra("workoutesc", workoutesc);
@@ -72,19 +73,26 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHold
         });
     }
 
-    @Override
     public int getItemCount() {
         return workoutItems.size();
     }
 
+    //************************************
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView workoutNameTextView;
+        TextView focusAreaTextView;
         ImageView workoutImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
             workoutNameTextView = itemView.findViewById(R.id.workoutNameTextView);
+            focusAreaTextView = itemView.findViewById(R.id.focusAreaTextView);
             workoutImageView = itemView.findViewById(R.id.workoutImageView);
+
         }
     }
+
+
+
+
 }

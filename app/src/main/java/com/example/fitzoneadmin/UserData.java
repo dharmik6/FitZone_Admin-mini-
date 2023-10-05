@@ -64,7 +64,7 @@ public class UserData extends AppCompatActivity {
         setDatabaseListener();
 
         nameTextView.setText(getIntent().getStringExtra("username"));
-        numberTextView.setText(getIntent().getStringExtra("phone"));
+        numberTextView.setText(getIntent().getStringExtra("number"));
         emailTextView.setText(getIntent().getStringExtra("email"));
         genderTextView.setText(getIntent().getStringExtra("gender"));
         heightTextView.setText(getIntent().getStringExtra("height"));
@@ -82,71 +82,7 @@ public class UserData extends AppCompatActivity {
     private void setDatabaseListener() {
 
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the email address from the intent
-                String email = getIntent().getStringExtra("email");
 
-                // Get the authenticated user
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-                // Delete the user from Firebase Authentication
-                if (user != null && user.getEmail().equals(email)) {
-                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                // User has been successfully deleted from Firebase Authentication
-                                // Now, delete the user's data from the Realtime Database
-
-                                DatabaseReference usersRef = database.getReference("users");
-                                Query query = usersRef.orderByChild("email").equalTo(email);
-                                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.exists()) {
-                                            // Loop through the dataSnapshot and delete the user with the specified email
-                                            for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                                                userSnapshot.getRef().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        // User data has been successfully deleted from the Realtime Database
-                                                        Toast.makeText(UserData.this, "Record Deleted", Toast.LENGTH_SHORT).show();
-                                                        onBackPressed(); // Go back to the previous screen
-                                                    }
-                                                }).addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        // Handle the case where deletion fails
-                                                        Toast.makeText(UserData.this, "Failed to delete record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                            }
-                                        } else {
-                                            // User with the specified email does not exist in the Realtime Database
-                                            Toast.makeText(UserData.this, "User not found in the database", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                                        // Handle any errors here
-                                        Toast.makeText(UserData.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            } else {
-                                // Handle the case where deletion from Firebase Authentication fails
-                                Toast.makeText(UserData.this, "Failed to delete user from authentication: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                } else {
-                    // User is not authenticated or the email does not match the authenticated user's email
-                    Toast.makeText(UserData.this, "User not authenticated or invalid email", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
 
 
 

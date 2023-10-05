@@ -3,20 +3,31 @@ package com.example.fitzoneadmin;
 public class WorkoutItem {
     private String workoutName;
     private String workoutFocusArea;
-    private String imageUrl;
+    private String workoutImageResourceId;
     private String workoutDescription;
-
-    public WorkoutItem(String workoutName, String workoutFocusArea, String imageUrl, String workoutDescription) {
+    public WorkoutItem() {
         this.workoutName = workoutName;
         this.workoutFocusArea = workoutFocusArea;
-        this.imageUrl = imageUrl;
+        this.workoutImageResourceId = workoutImageResourceId;
+    }
+
+    public WorkoutItem(String workoutName) {
+        this.workoutName=workoutName;
+    }
+
+    public String getWorkoutDescription() {
+        return workoutDescription;
+    }
+
+    public void setWorkoutDescription(String workoutDescription) {
         this.workoutDescription = workoutDescription;
     }
 
-    public WorkoutItem(String workoutName, String workoutFocusArea, String imageUrl) {
+    public WorkoutItem(String workoutName, String workoutFocusArea, String workoutDescription, String workoutImageResourceId) {
         this.workoutName = workoutName;
         this.workoutFocusArea = workoutFocusArea;
-        this.imageUrl = imageUrl;
+        this.workoutImageResourceId = workoutImageResourceId;
+        this.workoutDescription=workoutDescription;
     }
 
     public String getWorkoutName() {
@@ -35,19 +46,17 @@ public class WorkoutItem {
         this.workoutFocusArea = workoutFocusArea;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getWorkoutImageResourceId() {
+        return workoutImageResourceId;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setWorkoutImageResourceId(String workoutImageResourceId) {
+        this.workoutImageResourceId = workoutImageResourceId;
     }
 
-    public String getWorkoutDescription() {
-        return workoutDescription;
-    }
-
-    public void setWorkoutDescription(String workoutDescription) {
-        this.workoutDescription = workoutDescription;
+    public WorkoutItem(String workoutName, String workoutFocusArea) {
+        this.workoutName=workoutName;
+        this.workoutFocusArea=workoutFocusArea;
+        // Default constructor required for Firebase
     }
 }
