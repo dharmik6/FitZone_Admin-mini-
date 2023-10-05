@@ -55,8 +55,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     String username = item.getUserName();
                     String email = item.getEmail();
                     String age = item.getAge();
-                    String phone = item.getNumber();
-                    String gender = item.getNumber();
+                    String number = item.getNumber();
+                    String gender = item.getGender();
                     String height = item.getHiegth(); // Typo corrected from hiegth to height
                     String weight = item.getWiegth(); // Typo corrected from wirgth to weight
                     String imageUrl = item.getUserImageResourceId();
@@ -65,9 +65,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     intent.putExtra("username", username);
                     intent.putExtra("email", email);
                     intent.putExtra("age", age);
-                   intent.putExtra("phone", phone);
+                    intent.putExtra("number", number);
                     intent.putExtra("gender", gender);
-                   intent.putExtra("height", height);
+                    intent.putExtra("height", height);
                     intent.putExtra("weight", weight);
                     intent.putExtra("userimage", imageUrl);
 

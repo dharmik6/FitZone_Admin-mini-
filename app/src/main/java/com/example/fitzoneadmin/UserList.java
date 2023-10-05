@@ -113,13 +113,18 @@ public class UserList extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String userName = dataSnapshot.child("name").getValue(String.class);
-                    String email = dataSnapshot.child( "email").getValue(String.class);
-                   String age = dataSnapshot.child("age").getValue(String.class);
-                   String gender = dataSnapshot.child("gender").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
+                    Long ageLong = dataSnapshot.child("age").getValue(Long.class);
+                    Long heightLong = dataSnapshot.child("height").getValue(Long.class);
+                    Long weightLong = dataSnapshot.child("weight").getValue(Long.class);
+                    String gender = dataSnapshot.child("gender").getValue(String.class);
                     String phone = dataSnapshot.child("Number").getValue(String.class);
-                    String height = dataSnapshot.child("height").getValue(String.class);
-                    String weight = dataSnapshot.child("weight").getValue(String.class);
                     String uImage = dataSnapshot.child("img").getValue(String.class);
+
+                    // Convert Long values to String
+                    String age = String.valueOf(ageLong);
+                    String height = String.valueOf(heightLong);
+                    String weight = String.valueOf(weightLong);
 
                     if (userName != null) {
                         UserItem userItem = new UserItem();
@@ -127,13 +132,13 @@ public class UserList extends AppCompatActivity {
                         userItem.setAge(age);
                         userItem.setGender(gender);
                         userItem.setEmail(email);
-                       userItem.setNumber(phone);
+                        userItem.setNumber(phone);
                         userItem.setHiegth(height);
                         userItem.setWiegth(weight);
                         userItem.setUserImageResourceId(uImage);
 
-
                         userItems.add(userItem);
+
                     }
                 }
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
