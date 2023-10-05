@@ -1,6 +1,7 @@
 package com.example.fitzoneadmin;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -34,12 +35,15 @@ public class DietList extends AppCompatActivity {
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
     DatabaseReference databaseReference;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet_list);
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading..."); // Set the message for the progress dialog
+        progressDialog.setCancelable(false);
         //*****************************
         // add diet
         add_diet = findViewById(R.id.add_diet);

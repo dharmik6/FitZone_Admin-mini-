@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,11 +39,14 @@ TextView add_trainer ;
     DatabaseReference databaseReference;
     DrawerLayout drawerLayout ;
     NavigationView navigationView;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_list);
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading..."); // Set the message for the progress dialog
+        progressDialog.setCancelable(false);
         //***************************************************
         //navigation bar
         drawerLayout = findViewById(R.id.drawer_layout);

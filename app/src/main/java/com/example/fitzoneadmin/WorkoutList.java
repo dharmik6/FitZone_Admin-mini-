@@ -1,6 +1,7 @@
 package com.example.fitzoneadmin;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -35,11 +36,16 @@ public class WorkoutList extends AppCompatActivity {
     DatabaseReference databaseReference;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading..."); // Set the message for the progress dialog
+        progressDialog.setCancelable(false);
 
         // Initialize RecyclerView and its adapter
         recyclerView = findViewById(R.id.work_recyclerView);
@@ -87,7 +93,11 @@ public class WorkoutList extends AppCompatActivity {
                     redirectActivity(WorkoutList.this, UserList.class);
                 } else if (id == R.id.workout) {
                     // Already in the WorkoutList activity, do nothing
-                } else if (id == R.id.diet) {
+                }
+                else if (id == R.id.trainer) {
+                    redirectActivity(WorkoutList.this, TrainerList.class);
+                }
+                else if (id == R.id.diet) {
                     // Redirect to DietList activity
                     redirectActivity(WorkoutList.this, DietList.class);
                 } else {
@@ -124,6 +134,7 @@ public class WorkoutList extends AppCompatActivity {
     }
 
     private void setDatabaseListener() {
+        progressDialog.show();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -145,12 +156,14 @@ public class WorkoutList extends AppCompatActivity {
 
                 // Notify the adapter that the data has changed
                 adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle database error
                 Toast.makeText(WorkoutList.this, "Database Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         });
     }
