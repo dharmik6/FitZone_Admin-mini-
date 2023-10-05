@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -60,10 +61,18 @@ public class WorkoutAdd extends AppCompatActivity {
                 startActivityForResult(iGallery, PICK_IMAGE_REQUEST);
             }
         });
-
+//***********************
         add_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Create a ProgressDialog
+                ProgressDialog pd = new ProgressDialog(WorkoutAdd.this);
+                pd.setMessage("Loading user data");
+                pd.setCancelable(false);
+
+                // Show the ProgressDialog
+                pd.show();
+
                 // Get the values from EditText fields
                 String workoutName = work_name.getText().toString();
                 String focusArea = focuse_work.getText().toString();
@@ -96,6 +105,7 @@ public class WorkoutAdd extends AppCompatActivity {
                                         databaseReference.push().setValue(workoutItem);
                                         startActivity(new Intent(WorkoutAdd.this, WorkoutList.class));
                                         Toast.makeText(WorkoutAdd.this, "Workout added", Toast.LENGTH_SHORT).show();
+                                        pd.dismiss();
                                     }
                                 });
                             } else {
@@ -105,6 +115,7 @@ public class WorkoutAdd extends AppCompatActivity {
                         }
                     });
                 } else {
+                    pd.dismiss();
                     Toast.makeText(WorkoutAdd.this, "Please fill in all fields and select an image", Toast.LENGTH_SHORT).show();
                 }
             }
