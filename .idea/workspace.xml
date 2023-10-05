@@ -12,8 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64743f73-6f9a-4e6e-add4-46935ab9b38f" name="Changes" comment="darshan code">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_trainer_add.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/executionHistory/executionHistory.lock" afterDir="false" />
@@ -24,17 +22,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/AdminLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/DietList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/TrainerList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/UserList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fitzoneadmin/WorkoutList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_trainer_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_trainer_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_workout_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_workout_data.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -358,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696408094293</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="darshan code">
+      <created>1696436246544</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1696436246544</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

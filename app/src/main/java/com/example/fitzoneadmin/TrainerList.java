@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -92,8 +94,17 @@ TextView add_trainer ;
                     redirectActivity(TrainerList.this, WorkoutList.class);
                 } else if (id == R.id.diet) {
                     redirectActivity(TrainerList.this, DietList.class);
-                } else {
-                    Toast.makeText(TrainerList.this, "profile", Toast.LENGTH_SHORT).show();
+                }  else if (id == R.id.logout)
+                {
+                    SharedPreferences pref = getSharedPreferences("login", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("flag", false);
+                    editor.apply();
+
+                    // After logging out, navigate to the LoginActivity
+                    Intent intent = new Intent(TrainerList.this, AdminLogin.class);
+                    startActivity(intent);
+                    finish(); // Close th
                 }
 
                 closeDrawer(drawerLayout);

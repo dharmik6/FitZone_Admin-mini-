@@ -15,11 +15,9 @@
             android:title="Diet Plan" />
     </group>
     <group android:checkableBehavior="single">
-        <item android:title="Profile">
+        <item android:title="other">
             <menu>
-                <item
-                    android:id="@+id/profile"
-                    android:title="Profile" />
+
                 <item
                     android:id="@+id/logout"
                     android:title="Log out" />
