@@ -1,37 +1,35 @@
 package com.example.fitzoneadmin;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DietList extends AppCompatActivity {
-    TextView add_diet ;
+    TextView add_diet;
     private RecyclerView recyclerView;
     private DietAdapter adapter;
     private List<DietItem> dietItems = new ArrayList<>();
-    DrawerLayout drawerLayout ;
+    DrawerLayout drawerLayout;
     NavigationView navigationView;
     DatabaseReference databaseReference;
 
@@ -47,8 +45,7 @@ public class DietList extends AppCompatActivity {
         add_diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DietList.this,DietAdd.class));
-
+                startActivity(new Intent(DietList.this, DietAdd.class));
             }
         });
 
@@ -64,6 +61,14 @@ public class DietList extends AppCompatActivity {
             }
         });
 
+        recyclerView = findViewById(R.id.diet_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new DietAdapter(this, dietItems);
+        recyclerView.setAdapter(adapter);
+
+        // Call a method to retrieve data from Firebase
+        retrieveDataFromFirebase();
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -76,9 +81,17 @@ public class DietList extends AppCompatActivity {
                 } else if (id == R.id.workout) {
                     redirectActivity(DietList.this, WorkoutList.class);
                 } else if (id == R.id.diet) {
-                    redirectActivity(DietList.this, DietList.class);
-                } else {
-                    Toast.makeText(DietList.this, "profile", Toast.LENGTH_SHORT).show();
+                    // Do nothing, already in DietList activity
+                } else if (id == R.id.logout) {
+                    SharedPreferences pref = getSharedPreferences("login", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("flag", false);
+                    editor.apply();
+
+                    // After logging out, navigate to the LoginActivity
+                    Intent intent = new Intent(DietList.this, AdminLogin.class);
+                    startActivity(intent);
+                    finish(); // Close the current activity
                 }
 
                 closeDrawer(drawerLayout);
@@ -86,40 +99,26 @@ public class DietList extends AppCompatActivity {
                 return true;
             }
         });
-        recyclerView = findViewById(R.id.diet_recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DietAdapter(this, dietItems);
-        recyclerView.setAdapter(adapter);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("diets");
-
-        setDatabaseListener();
     }
 
-    private void setDatabaseListener() {
+    private void retrieveDataFromFirebase() {
+        // Get reference to your Firebase Database
+        databaseReference = FirebaseDatabase.getInstance().getReference("diet_items");
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 dietItems.clear();
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String dietName = dataSnapshot.child("dietName").getValue(String.class);
-                    String imageUrl = dataSnapshot.child("dietImageResourceId").getValue(String.class); // Change to "imageUrl"
-
-                    if (dietName != null && imageUrl != null) {
-                        DietItem dietItem = new DietItem(dietName, imageUrl);
-                        dietItems.add(dietItem);
-                    }
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    DietItem dietItem = snapshot.getValue(DietItem.class);
+                    dietItems.add(dietItem);
                 }
-                adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
+                adapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle database error
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors
             }
         });
     }
@@ -145,6 +144,4 @@ public class DietList extends AppCompatActivity {
         super.onPause();
         closeDrawer(drawerLayout);
     }
-
 }
-
