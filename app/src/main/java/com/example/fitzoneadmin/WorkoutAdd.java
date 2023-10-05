@@ -61,7 +61,7 @@ public class WorkoutAdd extends AppCompatActivity {
                 startActivityForResult(iGallery, PICK_IMAGE_REQUEST);
             }
         });
-
+//***********************
         add_work.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
