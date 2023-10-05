@@ -19,6 +19,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
 
     private List<DietItem> dietItems;
     private Context context;
+    private DietAdapter.OnItemClickListener onItemClickListener;
 
     public DietAdapter(Context context, List<DietItem> dietItems) {
         this.context = context;
@@ -46,10 +47,7 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
             } else {
                 holder.dietNameTextView.setText("");
             }
-            // Check if the values are not null before using them
-            if (dirtDescription != null) {
-            } else {
-            }
+
             // Load the image using Picasso
             if (imageUrl != null && !imageUrl.isEmpty()) {
                 Picasso.get().load(imageUrl).into(holder.dietImageView);
@@ -59,11 +57,11 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DietData.class);
-
-                    intent.putExtra("dname", dietName);
-                    intent.putExtra("desc", dirtDescription);
+                    intent.putExtra("wname", dietName);
+                    intent.putExtra("wdes", dirtDescription);
+                    // Pass the URL or other identifier for the image, which can be loaded in WorkoutData activity
                     intent.putExtra("imag", imageUrl);
-
+                    // Add the FLAG_ACTIVITY_NEW_TASK flag
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
@@ -85,5 +83,8 @@ public class DietAdapter extends RecyclerView.Adapter<DietAdapter.ViewHolder> {
             dietNameTextView = itemView.findViewById(R.id.dietNameTextView);
             dietImageView = itemView.findViewById(R.id.dietImageView);
         }
+    }
+
+    public class OnItemClickListener {
     }
 }

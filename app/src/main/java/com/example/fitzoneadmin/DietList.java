@@ -107,7 +107,7 @@ public class DietList extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String dietName = dataSnapshot.child("dietName").getValue(String.class);
-                    String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class); // Change to "imageUrl"
+                    String imageUrl = dataSnapshot.child("dietImageResourceId").getValue(String.class); // Change to "imageUrl"
 
                     if (dietName != null && imageUrl != null) {
                         DietItem dietItem = new DietItem(dietName, imageUrl);

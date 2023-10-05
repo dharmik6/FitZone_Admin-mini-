@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -78,8 +80,17 @@ public class WorkoutList extends AppCompatActivity {
                     redirectActivity(WorkoutList.this, WorkoutList.class);
                 } else if (id == R.id.diet) {
                     redirectActivity(WorkoutList.this, DietList.class);
-                } else {
-                    Toast.makeText(WorkoutList.this, "profile", Toast.LENGTH_SHORT).show();
+                }  else if (id == R.id.logout)
+                {
+                    SharedPreferences pref = getSharedPreferences("login", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("flag", false);
+                    editor.apply();
+
+                    // After logging out, navigate to the LoginActivity
+                    Intent intent = new Intent(WorkoutList.this, AdminLogin.class);
+                    startActivity(intent);
+                    finish(); // Close th
                 }
 
                 closeDrawer(drawerLayout);

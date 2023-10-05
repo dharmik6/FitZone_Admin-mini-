@@ -67,8 +67,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 int position = getAdapterPosition();
+                UserItem item = userItems.get(position);
                 if (position != RecyclerView.NO_POSITION) {
-                    UserItem item = userItems.get(position);
+
                     String username = item.getUserName();
                     String email = item.getEmail();
                     String age = item.getAge();

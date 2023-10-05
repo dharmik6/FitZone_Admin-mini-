@@ -1,7 +1,9 @@
 package com.example.fitzoneadmin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -89,8 +91,18 @@ public class AdminHomePage extends AppCompatActivity {
                     redirectActivity(AdminHomePage.this, WorkoutList.class);
                 } else if (id == R.id.diet) {
                     redirectActivity(AdminHomePage.this, DietList.class);
-                } else {
-                    Toast.makeText(AdminHomePage.this, "profile", Toast.LENGTH_SHORT).show();
+                }
+                else if (id == R.id.logout)
+                {
+                    SharedPreferences pref = getSharedPreferences("login", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putBoolean("flag", false);
+                    editor.apply();
+
+                    // After logging out, navigate to the LoginActivity
+                    Intent intent = new Intent(AdminHomePage.this, AdminLogin.class);
+                    startActivity(intent);
+                    finish(); // Close th
                 }
 
                 closeDrawer(drawerLayout);
