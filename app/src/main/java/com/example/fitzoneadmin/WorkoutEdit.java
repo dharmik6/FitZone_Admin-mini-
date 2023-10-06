@@ -53,6 +53,7 @@ public class WorkoutEdit extends AppCompatActivity {
         workoutimage = findViewById(R.id.change_work_image);
         Button updateButton = findViewById(R.id.btn_work_submit);
 
+
         Intent intent = getIntent();
         if (intent != null) {
             recordKey = intent.getStringExtra("workoutname");

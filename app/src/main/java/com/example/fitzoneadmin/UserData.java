@@ -80,56 +80,56 @@ public class UserData extends AppCompatActivity {
     }
 
 
-        private void setDatabaseListener() {
-            delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Get the email from the intent
-                    final String email = getIntent().getStringExtra("email");
+    private void setDatabaseListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the email from the intent
+                final String email = getIntent().getStringExtra("email");
 
-                    // Get reference to the "users" node in the Firebase database
-                    DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+                // Get reference to the "users" node in the Firebase database
+                DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
 
-                    // Query the database to find the specific user by email
-                    Query query = usersRef.orderByChild("email").equalTo(email);
-                    query.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if (dataSnapshot.exists()) {
-                                // Loop through the dataSnapshot and delete the user with the specified email
-                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                    snapshot.getRef().removeValue()
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    // User has been successfully deleted from the Realtime Database
-                                                    Toast.makeText(UserData.this, "User Record Deleted", Toast.LENGTH_SHORT).show();
-                                                    onBackPressed(); // Navigate back after deletion
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    // Handle errors here
-                                                    Toast.makeText(UserData.this, "Failed to delete user record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
-                                }
-                            } else {
-                                // User with the specified email does not exist in the Realtime Database
-                                Toast.makeText(UserData.this, "User not found in the database", Toast.LENGTH_SHORT).show();
+                // Query the database to find the specific user by email
+                Query query = usersRef.orderByChild("email").equalTo(email);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            // Loop through the dataSnapshot and delete the user with the specified email
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                snapshot.getRef().removeValue()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                // User has been successfully deleted from the Realtime Database
+                                                Toast.makeText(UserData.this, "User Record Deleted", Toast.LENGTH_SHORT).show();
+                                                onBackPressed(); // Navigate back after deletion
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                // Handle errors here
+                                                Toast.makeText(UserData.this, "Failed to delete user record: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }
+                        } else {
+                            // User with the specified email does not exist in the Realtime Database
+                            Toast.makeText(UserData.this, "User not found in the database", Toast.LENGTH_SHORT).show();
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            // Handle any errors here
-                            Toast.makeText(UserData.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            });
-        }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Handle any errors here
+                        Toast.makeText(UserData.this, "Database Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+    }
 
 
 }

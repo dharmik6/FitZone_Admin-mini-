@@ -51,7 +51,7 @@ public class DietList extends AppCompatActivity {
         add_diet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent idietadd = new Intent(DietList.this,DietAdd.class);
+                Intent idietadd = new Intent(DietList.this, DietAdd.class);
                 startActivity(idietadd);
             }
         });
